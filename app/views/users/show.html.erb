@@ -1,0 +1,58 @@
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+      <h2 class="page-heading">
+        <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+        <% end %>
+      </h2>
+      <% if @users.present? %>
+        <table class="table">
+          <tbody>
+            <% @users.each do |prototype| %>
+              <tr>
+                <th class="table__col1">名前</th>
+                <td class="table__col2"><%= prototype.user.name %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">プロフィール</th>
+                <td class="table__col2"><%= prototype.user.profile %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">所属</th>
+                <td class="table__col2"><%= prototype.user.occupation %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">役職</th>
+                <td class="table__col2"><%= prototype.user.position %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">プロトタイプ名</th>
+                <td class="table__col2"><%= prototype.title %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">キャッチコピー</th>
+                <td class="table__col2"><%= prototype.catch_copy %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">コンセプト</th>
+                <td class="table__col2"><%= prototype.concept %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">詳細</th>
+                <td class="table__col2"><%= link_to '詳細', prototype_path(prototype) %></td>
+              </tr>
+              <% if @users.present? %>
+                <h2 class="page-heading"><%= "#{prototype.user.name}さんのプロトタイプ" %></h2>
+                <div class="user__card">
+                  <%# 部分テンプレートでそのユーザーが投稿したプロトタイプ投稿一覧を表示する %>
+                </div>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>ユーザーが存在しません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
