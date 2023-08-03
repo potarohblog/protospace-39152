@@ -44,9 +44,11 @@ class PrototypesController < ApplicationController
 
   def destroy
     @prototype = Prototype.find(params[:id])
-    @prototype.destroy
+    #違うユーザーが投稿を削除できないようにする
+    if @prototype.user != current_user
       redirect_to root_path
   end
+end
 
   private
 
