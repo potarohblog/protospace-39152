@@ -27,7 +27,7 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
-    #違うユーザーが編集ページにアクセスできないようにする
+    #違うユーザーが投稿を編集するページにアクセスできないようにする
     if @prototype.user != current_user
       redirect_to root_path
     end
@@ -44,11 +44,12 @@ class PrototypesController < ApplicationController
 
   def destroy
     @prototype = Prototype.find(params[:id])
-    #違うユーザーが投稿を削除できないようにする
-    if @prototype.user != current_user
-      redirect_to root_path
+    # 投稿したユーザー以外が投稿を削除できないようにする
+    if user_signed_in? && current_user == @prototype.user
+      @prototype.destroy
+    end
+    redirect_to root_path
   end
-end
 
   private
 
