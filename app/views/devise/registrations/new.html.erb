@@ -12,6 +12,11 @@
           <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email" %>
         </div>
 
+                <div class="field">
+          <%= f.label :name, "ユーザー名" %><br />
+          <%= f.text_field :name, id:"user_name" %>
+        </div>
+
         <div class="field">
           <%= f.label :password, "パスワード（6文字以上）" %><br />
           <%= f.password_field :password, id:"user_password", autocomplete: "new-password" %>
@@ -20,26 +25,6 @@
         <div class="field">
           <%= f.label :password_confirmation, "パスワード再入力" %><br />
           <%= f.password_field :password_confirmation, id:"user_password_confirmation", autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :name, "ユーザー名" %><br />
-          <%= f.text_field :name, id:"user_name" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :profile, "プロフィール" %><br />
-          <%= f.text_area :profile, class: :form__text, id:"user_profile" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :occupation, "所属" %><br />
-          <%= f.text_area :occupation, class: :form__text, id:"user_occupation" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :position, "役職" %><br />
-          <%= f.text_area :position, class: :form__text, id:"user_position" %>
         </div>
 
         <div class="actions">
